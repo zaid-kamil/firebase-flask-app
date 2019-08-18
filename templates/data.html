@@ -1,10 +1,66 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+<style>
+    body{
+        background-color: #dedede;
+    }
+</style>
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
-            <a class="btn btn-danger" href="/logout" role="button">logout</a>
+        <div class="col-md-6 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Saved Data</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for element in data %}
+                                <tr>
+                                    <td>{{element.data.name}}</td>
+                                    <td>{{element.data.price}}</td>
+                                    <td>{{element.data.qty}}</td>
+                                </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Add new product</h4>
+                    <form method="post">
+                        <div class="form-group">
+                          <label for="pname">Product name</label>
+                          <input type="text"
+                            class="form-control" name="pname" id="pname" aria-describedby="helpId" placeholder="lenovo laptop">
+                          <small id="helpId" class="form-text text-muted">enter product name</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="pprice">Price</label>
+                          <input type="number"
+                            class="form-control" name="pprice" id="pprice" aria-describedby="priceHelpId" placeholder="40000">
+                          <small id="priceHelpId" class="form-text text-muted">enter product price(MRP)</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="pqty">Quantity</label>
+                          <input type="number"
+                            class="form-control" name="pqty" id="pqty" aria-describedby="qtyhelpId" placeholder="40">
+                          <small id="qtyhelpId" class="form-text text-muted">enter quantity of product</small>
+                        </div>
+                        <button  class="btn btn-success" btn-lg btn-block">Add Product</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
